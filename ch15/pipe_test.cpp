@@ -19,7 +19,7 @@ int main(){
         //parent
         close(fd[0]);
         //assert(write(fd[1], "p", 1) == 1);
-        write(fd[1], "helloworld\n", 12);
+        write(fd[1], "helloworld\n", 11);
         printf("parent write finished\n");
         exit(0);
     }else{
