@@ -3,7 +3,9 @@
 #include <fcntl.h>
 #include <stdlib.h>
 
-
+/*
+parent and child shared the open file decriptor
+*/
 
 
 int main(){

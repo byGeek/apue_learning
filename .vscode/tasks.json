@@ -14,7 +14,8 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}.o"
+                "${fileDirname}/${fileBasenameNoExtension}.o",
+                "-pthread"
             ],
             "options": {
                 "cwd": "/usr/bin"
