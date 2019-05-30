@@ -6,8 +6,13 @@ set (aput_learning_VERSION_MINOR 0)
 
 find_package(Threads)
 
-add_executable(apue_test 
-    ch16/getaddrinfo_test.cpp
+add_executable(sock_server 
+    ch16/sock_server.cpp
+    
 )
 
-target_link_libraries(apue_test ${CMAKE_THREAD_LIBS_INIT})
+add_executable(sock_client
+    ch16/sock_client.cpp
+)
+
+#target_link_libraries(sock_server ${CMAKE_THREAD_LIBS_INIT})
