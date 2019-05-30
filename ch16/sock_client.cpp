@@ -6,7 +6,7 @@
 
 #define PORT 10086
 
-void connect_retry(int fd, struct sockaddr* addr, socklen_t len){
+int connect_retry(int fd, struct sockaddr* addr, socklen_t len){
     int err;
     int MAX_SLEEP = 128;
     int nsleep =1;
@@ -14,18 +14,14 @@ void connect_retry(int fd, struct sockaddr* addr, socklen_t len){
     for(; nsleep < MAX_SLEEP; nsleep = nsleep<<1){
         err = connect(fd, addr, len);
         if(err == 0){
-            return;
+            return 0;
         }else{
             printf("can not connect to server\n");
+            sleep(nsleep);
         }
     }
 
-    if(err == 0){
-        return;
-    }else{
-        printf("can not connect to server!");
-        exit(1);
-    }
+    return -1;
 }
 
 int main(){
@@ -43,7 +39,6 @@ int main(){
     inet_pton(AF_INET, "127.0.0.1", &address.sin_addr.s_addr);
 
     connect_retry(sockfd, (sockaddr*)&address, sizeof(sockaddr_in));
-
 
     //send/recv
     char buf[] = "hello,world";
