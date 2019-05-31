@@ -43,6 +43,14 @@ int main(){
     address.sin_port = htons(PORT);
     inet_pton(AF_INET, "127.0.0.1", (void*)&address.sin_addr.s_addr);
 
+    //setsockopt
+    int reuse = 1;
+    if(setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &reuse, sizeof(int))<0){
+        printf("setsockopt failed\n");
+        close(sockfd);
+        exit(1);
+    }
+
     int err = bind(sockfd, (const sockaddr*)&address, sizeof(address));
     if(err != 0){
         printf("bind failed\n");
