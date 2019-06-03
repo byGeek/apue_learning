@@ -5,7 +5,7 @@
 
 void* thd_fn(void* arg){
     printf("in thread. pid=%lu, tid=%lu\n", (unsigned long)getpid(), (unsigned long)pthread_self());
-    return (void*)1
+    return (void*)1;
 }
 
 int main(){
