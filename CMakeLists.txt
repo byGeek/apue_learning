@@ -6,9 +6,14 @@ set (aput_learning_VERSION_MINOR 0)
 
 find_package(Threads)
 
-add_executable(sock_server 
-    ch16/test_endianess.cpp
-    
+add_executable(server 
+    ch17/unix_domain_socket.cpp
+    ch17/server.cpp
+)
+
+add_executable(client
+    ch17/unix_domain_socket.cpp
+    ch17/client.cpp
 )
 
 # add_executable(sock_client
